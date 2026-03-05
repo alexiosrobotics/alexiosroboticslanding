@@ -24,20 +24,21 @@ let turnstileRendered = false;
 function submitHuman(answer) {
   console.log("User answered:", answer);
 
-  // Hide buttons
+  // Hide buttons immediately
   document.querySelector(".human-buttons").style.display = "none";
 
   const captchaContainer = document.getElementById("turnstile-container");
   const errorEl = document.getElementById("error-text");
 
   if(answer === "no") {
-    // Show error typing
+    // Show error typing, do NOT show captcha or site
     typeText(errorEl, "ERROR: HUMAN RESPONSE REQUIRED.", 60);
 
+    // Ensure the captcha-screen stays visible and site is blocked
     document.getElementById("captcha-screen").style.display = "flex";
     document.getElementById("site-content").style.display = "none";
   } else {
-    // render turnstyle if yes
+    // Only render Turnstile if YES
     showCaptcha(captchaContainer);
   }
 }
