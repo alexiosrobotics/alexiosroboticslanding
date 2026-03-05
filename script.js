@@ -34,11 +34,10 @@ function submitHuman(answer) {
     // Show error typing, do NOT show captcha or site
     typeText(errorEl, "ERROR: HUMAN RESPONSE REQUIRED.", 60);
 
-    // Ensure the captcha-screen stays visible and site is blocked
     document.getElementById("captcha-screen").style.display = "flex";
     document.getElementById("site-content").style.display = "none";
   } else {
-    // Only render Turnstile if YES
+    // render if YES
     showCaptcha(captchaContainer);
   }
 }
