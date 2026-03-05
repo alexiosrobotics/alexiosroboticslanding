@@ -2,6 +2,15 @@
 setTimeout(() => {
   document.getElementById("loader").style.display = "none";
   document.getElementById("captcha-screen").style.display = "flex";
+
+  const promptEl = document.querySelector(".prompt");
+  const buttons = document.querySelector(".human-buttons");
+
+  // Type the "ARE YOU HUMAN?" text first
+  typeText(promptEl, "ARE YOU HUMAN?", 60, () => {
+    // Once typing is done, fade in buttons
+    buttons.classList.add("show");
+  });
 }, 3500);
 
 // Typing animation function
@@ -25,7 +34,8 @@ function submitHuman(answer) {
   console.log("User answered:", answer);
 
   // Hide buttons immediately
-  document.querySelector(".human-buttons").style.display = "none";
+  const buttons = document.querySelector(".human-buttons");
+  buttons.classList.remove("show");
 
   const captchaContainer = document.getElementById("turnstile-container");
   const errorEl = document.getElementById("error-text");
