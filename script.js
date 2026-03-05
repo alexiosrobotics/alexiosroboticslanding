@@ -24,17 +24,20 @@ let turnstileRendered = false;
 function submitHuman(answer) {
   console.log("User answered:", answer);
 
-  // Hide buttons immediately
+  // Hide buttons
   document.querySelector(".human-buttons").style.display = "none";
 
   const captchaContainer = document.getElementById("turnstile-container");
   const errorEl = document.getElementById("error-text");
 
   if(answer === "no") {
-    // Show error typing, but do NOT show captcha
+    // Show error typing
     typeText(errorEl, "ERROR: HUMAN RESPONSE REQUIRED.", 60);
+
+    document.getElementById("captcha-screen").style.display = "flex";
+    document.getElementById("site-content").style.display = "none";
   } else {
-    // Only render Turnstile if YES
+    // render turnstyle if yes
     showCaptcha(captchaContainer);
   }
 }
