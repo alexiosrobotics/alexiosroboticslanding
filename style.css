@@ -1,4 +1,4 @@
-/* From Uiverse.io by jeremyssocial */ 
+/* === Animations === */
 @keyframes blinkCursor {
   50% {
     border-right-color: transparent;
@@ -6,20 +6,22 @@
 }
 
 @keyframes typeAndDelete {
-  0%,
-  10% {
-    width: 0;
-  }
-  45%,
-  55% {
-    width: 6.2em;
-  } /* adjust width based on content */
-  90%,
-  100% {
-    width: 0;
-  }
+  0%, 10% { width: 0; }
+  45%, 55% { width: 6.2em; } /* adjust width per text */
+  90%, 100% { width: 0; }
 }
 
+@keyframes typeOnce {
+  0% { width: 0; }
+  100% { width: 100%; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* === Terminal Loader === */
 .terminal-loader {
   border: 0.1em solid #333;
   background-color: #1a1a1a;
@@ -52,27 +54,6 @@
   float: right;
 }
 
-.human-buttons{
-  display:flex;
-  gap:1em;
-  margin-bottom:1.5em;
-}
-
-.terminal-button{
-  background:#111;
-  border:1px solid #0f0;
-  color:#0f0;
-  font-family:"Courier New", monospace;
-  padding:0.4em 1.2em;
-  cursor:pointer;
-  transition:all 0.2s ease;
-}
-
-.terminal-button:hover{
-  background:#0f0;
-  color:#111;
-}
-
 .control {
   display: inline-block;
   width: 0.6em;
@@ -82,17 +63,9 @@
   background-color: #777;
 }
 
-.control.close {
-  background-color: #e33;
-}
-
-.control.minimize {
-  background-color: #ee0;
-}
-
-.control.maximize {
-  background-color: #0b0;
-}
+.control.close { background-color: #e33; }
+.control.minimize { background-color: #ee0; }
+.control.maximize { background-color: #0b0; }
 
 .terminal-title {
   float: left;
@@ -100,43 +73,86 @@
   color: #eee;
 }
 
+/* === Typing text === */
 .text {
   display: inline-block;
   white-space: nowrap;
   overflow: hidden;
-  border-right: 0.2em solid green; /* Cursor */
-  animation:
-    typeAndDelete 4s steps(11) infinite,
-    blinkCursor 0.5s step-end infinite alternate;
+  border-right: 0.2em solid green; /* cursor */
   margin-top: 1.5em;
+  font-family: "Courier New", monospace;
 }
 
-body{
-  background:#111;
-  color:#0f0;
-  font-family:"Courier New", monospace;
+/* Single-use type effect for human/error text */
+.single-type {
+  animation: typeOnce 2s steps(30, end) forwards, blinkCursor 0.5s step-end infinite alternate;
 }
 
-.center{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  height:100vh;
+/* === Buttons === */
+.human-buttons {
+  display: flex;
+  gap: 1em;
+  margin-top: 1.5em;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.4s ease;
 }
 
-.hidden{
-  display:none;
+.human-buttons.show {
+  opacity: 1;
 }
 
-.prompt{
-  margin-top:2em;
-  margin-bottom:1em;
-  text-align:center;
+.terminal-button {
+  background: #111;
+  border: 1px solid #0f0;
+  color: #0f0;
+  font-family: "Courier New", monospace;
+  padding: 0.4em 1.2em;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-.captcha-content{
-  margin-top:2em;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
+.terminal-button:hover {
+  background: #0f0;
+  color: #111;
+}
+
+.terminal-button:active {
+  transform: scale(0.95);
+}
+
+/* === Body / page === */
+body {
+  background: #111;
+  color: #0f0;
+  font-family: "Courier New", monospace;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.hidden {
+  display: none;
+}
+
+/* === Captcha content / prompt === */
+.captcha-content {
+  margin-top: 2.5em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.prompt {
+  margin-bottom: 1em;
+  text-align: center;
+}
+
+/* === Error text styling === */
+#error-text {
+  margin-top: 1em;
 }
