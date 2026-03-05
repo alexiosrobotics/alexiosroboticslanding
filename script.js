@@ -2,8 +2,6 @@
 setTimeout(() => {
   document.getElementById("loader").style.display = "none";
   document.getElementById("captcha-screen").style.display = "flex";
-
-  // No need to render Turnstile here — wait for user click
 }, 3500);
 
 // Typing animation function
@@ -30,14 +28,13 @@ function submitHuman(answer) {
   document.querySelector(".human-buttons").style.display = "none";
 
   const captchaContainer = document.getElementById("turnstile-container");
+  const errorEl = document.getElementById("error-text");
 
   if(answer === "no") {
-    // Show error typing before showing captcha
-    const errorEl = document.getElementById("error-text");
-    typeText(errorEl, "ERROR: HUMAN RESPONSE REQUIRED.", 60, () => {
-      showCaptcha(captchaContainer);
-    });
+    // Show error typing, but do NOT show captcha
+    typeText(errorEl, "ERROR: HUMAN RESPONSE REQUIRED.", 60);
   } else {
+    // Only render Turnstile if YES
     showCaptcha(captchaContainer);
   }
 }
@@ -55,6 +52,7 @@ function showCaptcha(container) {
   }
 }
 
+// Called when captcha is successfully completed
 function captchaSuccess(token) {
   console.log("Captcha completed, token:", token);
   document.getElementById("captcha-screen").style.display = "none";
