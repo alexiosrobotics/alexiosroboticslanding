@@ -5,12 +5,12 @@
 <title>Alexios Robotics</title>
 
 <link rel="stylesheet" href="style.css">
-
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 
 <body>
 
+<!-- Loader screen -->
 <div id="loader" class="center">
   <div class="terminal-loader">
     <div class="terminal-header">
@@ -25,8 +25,8 @@
   </div>
 </div>
 
+<!-- Captcha / human verification screen -->
 <div id="captcha-screen" class="center hidden">
-
   <div class="terminal-loader">
     <div class="terminal-header">
       <div class="terminal-title">verification</div>
@@ -41,23 +41,32 @@
 
       <p class="prompt">ARE YOU HUMAN?</p>
 
+      <!-- Buttons for user interaction -->
+      <div class="human-buttons">
+        <button class="terminal-button" onclick="submitHuman('yes')">YES</button>
+        <button class="terminal-button" onclick="submitHuman('no')">NO</button>
+      </div>
+
+      <!-- Error message typing -->
+      <div id="error-text" class="text" style="margin-top:1em;"></div>
+
+      <!-- Turnstile captcha -->
       <div
         class="cf-turnstile"
+        style="display:none"
         data-sitekey="0x4AAAAAACm9nRdc_VGlsvd-"
         data-callback="captchaSuccess">
       </div>
 
     </div>
-
   </div>
-
 </div>
 
+<!-- Main site content -->
 <div id="site-content" class="hidden">
   <h1>Welcome to Alexios Robotics</h1>
 </div>
 
 <script src="script.js"></script>
-
 </body>
 </html>
