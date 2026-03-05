@@ -52,6 +52,27 @@
   float: right;
 }
 
+.human-buttons{
+  display:flex;
+  gap:1em;
+  margin-bottom:1.5em;
+}
+
+.terminal-button{
+  background:#111;
+  border:1px solid #0f0;
+  color:#0f0;
+  font-family:"Courier New", monospace;
+  padding:0.4em 1.2em;
+  cursor:pointer;
+  transition:all 0.2s ease;
+}
+
+.terminal-button:hover{
+  background:#0f0;
+  color:#111;
+}
+
 .control {
   display: inline-block;
   width: 0.6em;
