@@ -78,9 +78,9 @@
   display: inline-block;
   white-space: nowrap;
   overflow: hidden;
-  border-right: 0.2em solid green; /* cursor */
+  border-right: 0.2em solid green; /* Cursor */
   margin-top: 1.5em;
-  font-family: "Courier New", monospace;
+  animation: blinkCursor 0.5s step-end infinite alternate; /* only cursor */
 }
 
 /* Single-use type effect for human/error text */
