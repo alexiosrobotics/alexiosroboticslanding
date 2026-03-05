@@ -1,9 +1,63 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Test</title>
+<meta charset="UTF-8">
+<title>Alexios Robotics</title>
+
+<link rel="stylesheet" href="style.css">
+
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
+
 <body>
-    <h1>working</h1>
+
+<div id="loader" class="center">
+  <div class="terminal-loader">
+    <div class="terminal-header">
+      <div class="terminal-title">terminal</div>
+      <div class="terminal-controls">
+        <span class="control close"></span>
+        <span class="control minimize"></span>
+        <span class="control maximize"></span>
+      </div>
+    </div>
+    <div class="text">loading...</div>
+  </div>
+</div>
+
+<div id="captcha-screen" class="center hidden">
+
+  <div class="terminal-loader">
+    <div class="terminal-header">
+      <div class="terminal-title">verification</div>
+      <div class="terminal-controls">
+        <span class="control close"></span>
+        <span class="control minimize"></span>
+        <span class="control maximize"></span>
+      </div>
+    </div>
+
+    <div class="captcha-content">
+
+      <p class="prompt">verify you are human</p>
+
+      <div
+        class="cf-turnstile"
+        data-sitekey="YOUR_SITE_KEY"
+        data-callback="captchaSuccess">
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<div id="site-content" class="hidden">
+  <h1>Welcome to Alexios Robotics</h1>
+</div>
+
+<script src="script.js"></script>
+
 </body>
 </html>
