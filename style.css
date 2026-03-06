@@ -88,30 +88,32 @@
   animation: typeOnce 2s steps(30, end) forwards, blinkCursor 0.5s step-end infinite alternate;
 }
 
-/* === Buttons === */
+/* Buttons container */
 .human-buttons {
   display: flex;
   gap: 1em;
-  margin-top: 3em; /* enough space below prompt */
+  margin-top: 2em; /* space below prompt */
   justify-content: center;
 
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.4s ease, visibility 0.4s ease;
-  position: relative;
-  z-index: 5; /* ensures above loader borders */
+
+  position: relative; /* ensures inside loader */
+  z-index: 10;       /* above everything else */
 }
 
+/* Show buttons */
 .human-buttons.show {
   opacity: 1;
   visibility: visible;
 }
 
-/* Make buttons text and border very visible */
+/* Buttons themselves */
 .terminal-button {
-  background: #111; /* dark, matches loader */
-  border: 2px solid #0f0; /* thicker for visibility */
-  color: #0f0; /* bright green */
+  background: #111;
+  border: 2px solid #0f0;   /* thicker to make it visible */
+  color: #0f0;               /* bright green */
   font-family: "Courier New", monospace;
   font-size: 1em;
   font-weight: bold;
